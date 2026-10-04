@@ -4,6 +4,8 @@
 
 A Python web app for Badaga children growing up outside India: playful, short language adventures that continue in conversations with family.
 
+[![Learning checks](https://github.com/sivalinb/hatti-quest/actions/workflows/ci.yml/badge.svg)](https://github.com/sivalinb/hatti-quest/actions/workflows/ci.yml)
+
 ![Siva Babu’s illustrated founder story: roots, distance, and building a way to connect](static/assets/founder-story.png)
 
 ## Why I’m building this

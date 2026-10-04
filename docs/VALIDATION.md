@@ -21,6 +21,6 @@ Desktop, mobile and founder-story screenshots are in `docs/screenshots/`. Any re
 
 Python checks include a mocked successful model response, malformed JSON, unknown IDs, duplicate terms, changed topics, extra generated fields and a provider outage. These establish the selection contract and fallback. No live provider, model quality, Badaga speech recognition or text-to-speech system has been tested or is claimed.
 
-The current Starlette test client emits a deprecation warning about its httpx adapter; it does not cause a test failure. Public CI repeats Python checks on 3.12 and 3.13 and runs the browser workflow on Linux.
+The current Starlette test client emits a deprecation warning about its httpx adapter; it does not cause a test failure. [Public CI passed](https://github.com/sivalinb/hatti-quest/actions/runs/37174748583) with Python checks on 3.12 and 3.13 and the complete browser workflow on Linux. Mobile navigation uses equal columns to accommodate different system fonts across platforms.
 
 Docker packaging is supplied but was not built locally because Docker is unavailable on the development machine. A public hosted deployment has not been created. Fluent Badaga speaker review, learning effectiveness with children, family dialect coverage and Safari/mobile-device microphone compatibility remain to be evaluated with community participation.
