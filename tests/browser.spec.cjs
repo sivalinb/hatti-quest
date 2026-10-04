@@ -108,6 +108,10 @@ const output = path.join(__dirname, '..', 'docs', 'screenshots');
     for (const name of ['Adventure', 'Word basket', 'Family corner', 'Our story']) {
       await page.getByRole('button', {name, exact: true}).click();
       const fits = await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth);
+      if (!fits) {
+        const overflow = await page.evaluate(() => [...document.querySelectorAll('body *')].map(el => ({tag: el.tagName, id: el.id, class: el.className, right: el.getBoundingClientRect().right})).filter(el => el.right > innerWidth + 0.5));
+        console.error(JSON.stringify({view:name, width, overflow}));
+      }
       assert(fits, `${name} should fit a ${width}px screen`);
     }
   }
