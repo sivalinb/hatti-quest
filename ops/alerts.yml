@@ -1,0 +1,17 @@
+groups:
+  - name: hatti-quest
+    rules:
+      - alert: HattiAppUnavailable
+        expr: up{job="hatti-quest"} == 0
+        for: 1m
+        annotations:
+          summary: Hatti Quest scrape target is unavailable
+      - alert: HattiProviderFailures
+        expr: sum(rate(hatti_ai_calls_total{outcome="failed"}[5m])) / clamp_min(sum(rate(hatti_ai_calls_total[5m])), 0.001) > 0.1
+        for: 3m
+        annotations:
+          summary: More than ten percent of measured AI stage events are failures
+      - alert: HattiGroundingRegression
+        expr: hatti_eval_score{metric="guard_pass_rate"} < 1
+        annotations:
+          summary: A source-reference guard failed in the latest evaluation

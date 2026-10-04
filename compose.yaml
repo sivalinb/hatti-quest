@@ -1,0 +1,40 @@
+services:
+  app:
+    build: .
+    ports: ['127.0.0.1:8765:8765']
+    environment:
+      HATTI_ENABLE_LIVE_AI: ${HATTI_ENABLE_LIVE_AI:-0}
+      NEBIUS_API_KEY: ${NEBIUS_API_KEY:-}
+      PINECONE_API_KEY: ${PINECONE_API_KEY:-}
+      PINECONE_INDEX_HOST: ${PINECONE_INDEX_HOST:-}
+      HATTI_PINECONE_NAMESPACE: hatti-quest-v1
+      BRAINTRUST_API_KEY: ${BRAINTRUST_API_KEY:-}
+      HATTI_OPS_TOKEN: ${HATTI_OPS_TOKEN:-}
+      HATTI_GRAFANA_URL: http://127.0.0.1:3017/d/hatti-quest/hatti-quest
+      HATTI_PROMETHEUS_URL: http://127.0.0.1:9097
+    volumes: ['hatti-data:/app/data/private']
+    restart: unless-stopped
+  prometheus:
+    image: prom/prometheus:v3.14.0
+    ports: ['127.0.0.1:9097:9090']
+    volumes:
+      - ./ops/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./ops/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana:12.1.1
+    ports: ['127.0.0.1:3017:3000']
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in a private .env file}
+      GF_USERS_ALLOW_SIGN_UP: 'false'
+      GF_ANALYTICS_REPORTING_ENABLED: 'false'
+    volumes:
+      - ./ops/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+volumes:
+  hatti-data:
+  prometheus-data:
+  grafana-data:

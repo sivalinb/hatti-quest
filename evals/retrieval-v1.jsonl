@@ -1,0 +1,24 @@
+{"id":"r01","query":"a parent who is your dad","expected":["father"]}
+{"id":"r02","query":"mum in a family photograph","expected":["mother"]}
+{"id":"r03","query":"a female grandparent","expected":["grandmother"]}
+{"id":"r04","query":"a male grandparent","expected":["grandfather"]}
+{"id":"r05","query":"an older male sibling","expected":["brother"]}
+{"id":"r06","query":"a younger male sibling","expected":["young-brother"]}
+{"id":"r07","query":"an older female sibling","expected":["sister"]}
+{"id":"r08","query":"a puppy or pet canine","expected":["dog"]}
+{"id":"r09","query":"a kitten or pet feline","expected":["cat"]}
+{"id":"r10","query":"a small bird that chirps near houses","expected":["sparrow"]}
+{"id":"r11","query":"a talking colourful bird","expected":["parrot"]}
+{"id":"r12","query":"a big animal with a trunk","expected":["elephant"]}
+{"id":"r13","query":"a pond animal that hops and croaks","expected":["frog"]}
+{"id":"r14","query":"an animal that swims underwater","expected":["fish"]}
+{"id":"r15","query":"the white drink called milk","expected":["milk"]}
+{"id":"r16","query":"what you brush with a toothbrush","expected":["teeth"]}
+{"id":"r17","query":"what you use to smell a flower","expected":["nose"]}
+{"id":"r18","query":"what you use to hear a familiar voice","expected":["ear"]}
+{"id":"r19","query":"digits on your hands","expected":["fingers"]}
+{"id":"r20","query":"feeling hungry before a meal","expected":["hunger"]}
+{"id":"r21","query":"ask someone how they are doing","expected":["how-are-you"]}
+{"id":"r22","query":"ask somebody their name","expected":["your-name"]}
+{"id":"r23","query":"count one two three small objects","expected":["one","two","three"]}
+{"id":"r24","query":"Haalu","expected":["milk"]}

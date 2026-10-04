@@ -6,7 +6,9 @@ RUN useradd --create-home --uid 10001 hatti
 COPY hatti hatti
 COPY static static
 COPY templates templates
+COPY evals evals
 COPY run.py .
+RUN mkdir -p /app/data/private && chown -R hatti:hatti /app/data /app/evals
 USER hatti
 EXPOSE 8765
 CMD ["python", "run.py", "--host", "0.0.0.0", "--port", "8765"]

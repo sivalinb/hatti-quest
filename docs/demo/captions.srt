@@ -1,0 +1,301 @@
+1
+00:00:00,000 --> 00:00:04,859
+In southern India, the Nilgiri Hills are often called the Blue
+Mountains.
+
+2
+00:00:04,859 --> 00:00:11,338
+Their landscapes are home to many communities, including the
+Toda, Kota, Kurumba, Irula, Paniya and Kattunayaka.
+
+3
+00:00:11,338 --> 00:00:14,577
+Each carries its own living language and traditions.
+
+4
+00:00:14,577 --> 00:00:20,651
+This is the setting for Hatti Quest, a small attempt to keep a
+connection alive.
+
+5
+00:00:21,151 --> 00:00:23,590
+I'm Siva Babu, and I'm Badaga.
+
+6
+00:00:23,590 --> 00:00:28,061
+Our community is rooted in the Nilgiri Hills of Tamil Nadu.
+
+7
+00:00:28,061 --> 00:00:30,094
+Badaga is a Dravidian language.
+
+8
+00:00:30,094 --> 00:00:37,004
+India's twenty eleven Census recorded one hundred and thirty-
+three thousand, five hundred and fifty Badaga mother-tongue
+speakers.
+
+9
+00:00:37,004 --> 00:00:41,476
+That is a dated census count, not a current worldwide estimate.
+
+10
+00:00:41,476 --> 00:00:46,354
+Behind the number are family conversations, memories, and a
+sense of belonging.
+
+11
+00:00:46,854 --> 00:00:51,993
+Badaga has a strong oral tradition, without a single broadly
+standardised native writing system.
+
+12
+00:00:51,993 --> 00:00:54,931
+That does not mean it cannot be written.
+
+13
+00:00:54,931 --> 00:00:59,703
+People use Roman, Tamil and Kannada writing, and dedicated
+scripts have been proposed.
+
+14
+00:00:59,703 --> 00:01:01,906
+Spellings and family usage can differ.
+
+15
+00:01:01,906 --> 00:01:05,945
+A written word alone cannot carry every sound, relationship or
+memory.
+
+16
+00:01:05,945 --> 00:01:10,717
+Preserving the language also means making room for fluent
+speakers and familiar voices.
+
+17
+00:01:11,217 --> 00:01:17,165
+For children growing up outside India, everyday life may happen
+mostly in English or another local language.
+
+18
+00:01:17,165 --> 00:01:21,014
+There may be fewer neighbours, classmates, and relatives who
+speak Badaga.
+
+19
+00:01:21,014 --> 00:01:25,912
+A child can love their roots and still struggle to reply to a
+grandparent.
+
+20
+00:01:25,912 --> 00:01:29,060
+Time zones and busy routines make regular practice harder.
+
+21
+00:01:29,060 --> 00:01:33,609
+Hatti Quest turns that distance into small, playful
+opportunities to connect with family.
+
+22
+00:01:34,109 --> 00:01:38,253
+The adventure begins on an illustrated trail inspired by the
+hills.
+
+23
+00:01:38,253 --> 00:01:42,397
+Every stop is open, and a lesson takes about three minutes.
+
+24
+00:01:42,397 --> 00:01:47,295
+Children meet everyday words about family, conversation, nature,
+counting, and life at home.
+
+25
+00:01:47,295 --> 00:01:52,193
+They play gentle recognition games, collect badges, and revisit
+words through spaced practice.
+
+26
+00:01:52,193 --> 00:01:55,961
+There are fifty source-documented words and phrases in this
+starter.
+
+27
+00:01:55,961 --> 00:02:01,989
+The aim is a confident little beginning that can continue after
+the screen is put away.
+
+28
+00:02:02,489 --> 00:02:06,167
+Family corner lets a grown-up record a word in a familiar voice.
+
+29
+00:02:06,167 --> 00:02:11,684
+A parent or grandparent can say it slowly, then the child can
+hear that recording during a lesson.
+
+30
+00:02:11,684 --> 00:02:14,749
+These short recordings stay in the browser on this device.
+
+31
+00:02:14,749 --> 00:02:17,202
+They are never uploaded to the AI services.
+
+32
+00:02:17,202 --> 00:02:19,041
+There is no automatic accent score.
+
+33
+00:02:19,041 --> 00:02:25,784
+Families can keep their own way of saying a word alongside the
+published source form, and download a recording as a keepsake.
+
+34
+00:02:26,284 --> 00:02:29,205
+Story Studio brings the AI into the experience.
+
+35
+00:02:29,205 --> 00:02:35,049
+A child chooses a moon mission, an animal adventure, a magical
+sketchbook, or a little mystery.
+
+36
+00:02:35,049 --> 00:02:37,240
+They choose a word topic too.
+
+37
+00:02:37,240 --> 00:02:42,718
+The system retrieves relevant vocabulary and creates three short
+English scenes around those word references.
+
+38
+00:02:42,718 --> 00:02:47,466
+Python supplies the Badaga forms and the word games from the
+documented collection.
+
+39
+00:02:47,466 --> 00:02:51,483
+A small family activity carries the story back into everyday
+life.
+
+40
+00:02:51,483 --> 00:02:55,135
+An authored adventure remains available if live AI cannot
+finish.
+
+41
+00:02:55,635 --> 00:02:58,483
+The builder's dashboard makes the system visible.
+
+42
+00:02:58,483 --> 00:03:01,332
+Nebius runs the embedding and story models.
+
+43
+00:03:01,332 --> 00:03:08,656
+Pinecone searches a dedicated vocabulary namespace, and Python
+combines those results with lexical search using reciprocal rank
+fusion.
+
+44
+00:03:08,656 --> 00:03:13,946
+The model returns structured English fiction, then Python
+validates the referenced word identifiers.
+
+45
+00:03:13,946 --> 00:03:18,829
+The run ledger shows the sources, retrieval ranks, latency, and
+provider-reported tokens.
+
+46
+00:03:18,829 --> 00:03:21,678
+A cached adventure reports zero new tokens.
+
+47
+00:03:21,678 --> 00:03:26,561
+Braintrust traces follow each stage, so a builder can inspect
+what happened.
+
+48
+00:03:27,061 --> 00:03:30,110
+We measured retrieval on twenty-four curated English queries.
+
+49
+00:03:30,110 --> 00:03:35,446
+Hybrid search found the expected words within its top five
+results in every case.
+
+50
+00:03:35,446 --> 00:03:38,495
+The original lexical search achieved fifty-four percent recall.
+
+51
+00:03:38,495 --> 00:03:43,831
+Eight generated adventures used valid source word references,
+and all six grounding checks passed.
+
+52
+00:03:43,831 --> 00:03:48,786
+These are small engineering checks, not proof of language
+accuracy or learning effectiveness.
+
+53
+00:03:48,786 --> 00:03:51,072
+Community speaker review is still pending.
+
+54
+00:03:51,072 --> 00:03:57,552
+Fluent speakers and families are the people who can validate
+pronunciation, preferred usage, and the learning experience.
+
+55
+00:03:58,052 --> 00:04:03,483
+Prometheus scrapes the running Python application, and Grafana
+displays the live metrics.
+
+56
+00:04:03,483 --> 00:04:10,724
+We can see service health, reported tokens, request modes, stage
+latency, and the latest evaluation scores.
+
+57
+00:04:10,724 --> 00:04:14,345
+Braintrust holds the traces and the experiment record.
+
+58
+00:04:14,345 --> 00:04:17,966
+This makes failures, fallbacks, and cache behaviour inspectable.
+
+59
+00:04:17,966 --> 00:04:28,375
+The public GitHub repository includes the Python application,
+tests, evaluation dataset, and monitoring configuration, so
+another builder can reproduce and improve the work.
+
+60
+00:04:28,875 --> 00:04:37,362
+The next step is community review: more family voices, corrected
+word forms, and learning activities shaped by the people who use
+the language.
+
+61
+00:04:37,362 --> 00:04:42,896
+The same approach could support other languages with small
+digital collections or strong oral traditions.
+
+62
+00:04:42,896 --> 00:04:47,693
+Each would need its own source material, permission, speaker
+review, and evaluation cases.
+
+63
+00:04:47,693 --> 00:04:51,752
+It would also need its own choices about writing and
+pronunciation.
+
+64
+00:04:51,752 --> 00:04:59,500
+Hatti Quest is my attempt to make technology useful to
+belonging, one little word and one family conversation at a
+time.

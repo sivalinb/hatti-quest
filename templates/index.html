@@ -44,6 +44,13 @@
       </div>
       <div class="journey-strip"><div><span aria-hidden="true">✦</span><strong id="learned-count">0</strong><small>words recognised</small></div><div><span aria-hidden="true">🏡</span><strong id="family-count">0</strong><small>family moments</small></div><div><span aria-hidden="true">🌿</span><strong id="badge-count">0</strong><small>adventure badges</small></div><p>Every little word is<br>a connection worth keeping.</p></div>
       <div class="badge-shelf" id="badges" aria-label="Your adventure badges"></div>
+      <section class="studio panel" aria-labelledby="studio-heading">
+        <div class="studio-intro"><div><p class="eyebrow">A NEW STORY, A LITTLE OF HOME</p><h2 id="studio-heading">Your imagination. Our words.</h2><p>Fly to the moon. Solve a little mystery.<br>Take three Badaga words along for the adventure.</p></div><span class="studio-art" aria-hidden="true">✧ 🚀 ✧</span></div>
+        <div class="studio-controls"><label for="story-theme">Today I feel like…<select id="story-theme"><option value="space">🚀 A moon mission</option><option value="detective">🔎 A little mystery</option><option value="art">🎨 A magical sketchbook</option><option value="animals">🐦 An animal adventure</option></select></label><label for="story-focus">Bring words about…<select id="story-focus"><option value="family">Our family</option><option value="garden">Animals & birds</option><option value="market">Counting</option><option value="kitchen">Everyday life</option><option value="hello">A little conversation</option></select></label><button class="button primary" id="create-story">Make my adventure ✦</button></div>
+        <p id="studio-status" class="muted" aria-live="polite">English stories, Badaga word cards, and a family moment to take away.</p>
+        <div id="studio-story" class="studio-story" aria-live="polite"></div>
+        <details class="studio-note"><summary>For grown-ups: how these stories are made</summary><p>AI writes short English make-believe scenes using documented vocabulary references. Python supplies the Badaga spellings and quizzes from the source collection. Families check pronunciation and preferred forms. Topic, theme and any word IDs due for review may be sent to the AI services; family audio, names and profiles stay on this device. An authored adventure is available when live AI is off or unavailable.</p></details>
+      </section>
     </section>
 
     <section class="view" id="view-basket" aria-labelledby="basket-heading" hidden>
@@ -70,7 +77,7 @@
     <noscript><p class="panel">Please enable JavaScript for adventures and local family recordings. You can also explore <a href="https://badaga.co/learn-badaga/">community language resources</a>.</p></noscript>
     <p id="app-error" class="app-error" role="alert" hidden></p>
   </main>
-  <footer><span>hattiquest · Made for the words that bring us together.</span><a href="https://github.com/sivalinb/hatti-quest" target="_blank" rel="noopener noreferrer">Built with care by Siva Babu ↗</a></footer>
+  <footer><span>hattiquest · Made for the words that bring us together.</span><a href="/lab">For builders: AI evidence ↗</a><a href="https://github.com/sivalinb/hatti-quest" target="_blank" rel="noopener noreferrer">Built with care by Siva Babu ↗</a></footer>
   <dialog id="quest-dialog" aria-labelledby="quest-heading"><button id="close-quest" class="close-button" aria-label="Close adventure">×</button><div id="quest-body"></div></dialog>
   <div class="toast" id="toast" role="status" hidden></div>
 </body>

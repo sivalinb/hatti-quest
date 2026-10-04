@@ -37,3 +37,4 @@ jobs:
           python run.py > /tmp/hatti-server.log 2>&1 &
           python -c "import time, urllib.request; time.sleep(2); urllib.request.urlopen('http://127.0.0.1:8765/health')"
           node tests/browser.spec.cjs
+          node tests/ai-browser.spec.cjs

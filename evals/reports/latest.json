@@ -1,0 +1,3287 @@
+{
+  "status": "complete",
+  "generated_at": "2026-10-04T04:16:49.165151+00:00",
+  "dataset_version": "retrieval-v1",
+  "corpus_fingerprint": "c92b6eb30218847e",
+  "prompt_version": "story-v2.0",
+  "models": {
+    "generation": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "embedding": "Qwen/Qwen3-Embedding-8B"
+  },
+  "dimensions": 256,
+  "braintrust_url": "https://www.braintrust.dev/app/siva-project/p/Hatti%20Quest/experiments/hatti-20261004-041454",
+  "metrics": {
+    "bm25": {
+      "recall_at_5": 0.5416666666666666,
+      "mrr": 0.4111111111111111
+    },
+    "hybrid": {
+      "recall_at_5": 1.0,
+      "mrr": 0.6659722222222222
+    },
+    "story_grounding": 1.0,
+    "live_generation_rate": 1.0,
+    "guard_pass_rate": 1.0
+  },
+  "retrieval_cases": [
+    {
+      "id": "r01",
+      "query": "a parent who is your dad",
+      "expected": [
+        "father"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "your-village",
+          "your-name",
+          "my-name",
+          "elephant",
+          "mother"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "my-name",
+          "father",
+          "your-village",
+          "grandfather",
+          "your-name"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 2544.69,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 351.63,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=bdc8fbf4-97f8-41f4-b74e-726005473b91"
+    },
+    {
+      "id": "r02",
+      "query": "mum in a family photograph",
+      "expected": [
+        "mother"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "dog",
+          "fish",
+          "father",
+          "mouth",
+          "child"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "child",
+          "dog",
+          "mother",
+          "fish",
+          "grandmother"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 631.0,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 309.76,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=068a2d8a-270a-4aa8-9999-938b22e17fa2"
+    },
+    {
+      "id": "r03",
+      "query": "a female grandparent",
+      "expected": [
+        "grandmother"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "grandfather",
+          "dog",
+          "child",
+          "teeth",
+          "badaga-answer"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "grandfather",
+          "grandmother",
+          "child",
+          "dog",
+          "sister"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 870.58,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 538.92,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=ba1430ab-8236-4517-8e56-6cf747854191"
+    },
+    {
+      "id": "r04",
+      "query": "a male grandparent",
+      "expected": [
+        "grandfather"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "grandfather",
+          "dog",
+          "child",
+          "teeth",
+          "badaga-answer"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "grandfather",
+          "father",
+          "grandmother",
+          "child",
+          "dog"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 924.64,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 323.83,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=e456f45f-1523-44bc-8e30-16fec1524f11"
+    },
+    {
+      "id": "r05",
+      "query": "an older male sibling",
+      "expected": [
+        "brother"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "sister",
+          "young-brother",
+          "elders",
+          "cat",
+          "badaga-question"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.2,
+        "ids": [
+          "young-brother",
+          "sister",
+          "elders",
+          "how-are-you",
+          "brother"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 579.01,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 368.19,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=dffe6de1-91c4-4e5f-a0b6-910bbcdeb8b1"
+    },
+    {
+      "id": "r06",
+      "query": "a younger male sibling",
+      "expected": [
+        "young-brother"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "young-brother",
+          "dog",
+          "child",
+          "grandfather",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "young-brother",
+          "child",
+          "dog",
+          "sister",
+          "brother"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 625.21,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 402.84,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=bc1bb443-631d-4fe0-ac3b-04867b10a563"
+    },
+    {
+      "id": "r07",
+      "query": "an older female sibling",
+      "expected": [
+        "sister"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "sister",
+          "young-brother",
+          "elders",
+          "cat",
+          "badaga-question"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "sister",
+          "young-brother",
+          "elders",
+          "brother",
+          "cat"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 531.75,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 363.73,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=b0432434-cf9d-4f2d-b29e-dc2138c2fddc"
+    },
+    {
+      "id": "r08",
+      "query": "a puppy or pet canine",
+      "expected": [
+        "dog"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "dog",
+          "fish",
+          "child",
+          "grandfather",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "dog",
+          "child",
+          "fish",
+          "frog",
+          "rabbit"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 655.8,
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 376.79,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=fcdbeac4-8d90-4a0d-b372-101860defd73"
+    },
+    {
+      "id": "r09",
+      "query": "a kitten or pet feline",
+      "expected": [
+        "cat"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "dog",
+          "fish",
+          "child",
+          "grandfather",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "child",
+          "fish",
+          "cat",
+          "dog",
+          "frog"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 684.09,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 354.32,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=d95fb881-49dc-4bbe-904a-7368c6a0f94c"
+    },
+    {
+      "id": "r10",
+      "query": "a small bird that chirps near houses",
+      "expected": [
+        "sparrow"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "parrot",
+          "sparrow",
+          "cat",
+          "dog",
+          "child"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "sparrow",
+          "parrot",
+          "cat",
+          "crow",
+          "dog"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 523.97,
+          "input_tokens": 9,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 392.18,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=53f75798-3203-4a2d-aba0-de8337f9da41"
+    },
+    {
+      "id": "r11",
+      "query": "a talking colourful bird",
+      "expected": [
+        "parrot"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "parrot",
+          "sparrow",
+          "dog",
+          "child",
+          "grandfather"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "parrot",
+          "sparrow",
+          "crow",
+          "dog",
+          "child"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 523.6,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 319.52,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=9fa454f0-c879-4973-83c0-a94faacae84e"
+    },
+    {
+      "id": "r12",
+      "query": "a big animal with a trunk",
+      "expected": [
+        "elephant"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "fish",
+          "rabbit",
+          "teeth",
+          "your-name",
+          "how-are-you"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "rabbit",
+          "cow",
+          "elephant",
+          "fish",
+          "frog"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 584.58,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 330.37,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=fb3344ec-a5ec-4c21-87a1-655af8611a5b"
+    },
+    {
+      "id": "r13",
+      "query": "a pond animal that hops and croaks",
+      "expected": [
+        "frog"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "fish",
+          "rabbit",
+          "mouth",
+          "tongue",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "fish",
+          "rabbit",
+          "frog",
+          "crow",
+          "mouth"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 558.19,
+          "input_tokens": 9,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 384.6,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=8cd7de2b-e576-4522-84ea-46a348722175"
+    },
+    {
+      "id": "r14",
+      "query": "an animal that swims underwater",
+      "expected": [
+        "fish"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "cat",
+          "cow",
+          "fish",
+          "rabbit",
+          "sister"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "cat",
+          "fish",
+          "cow",
+          "rabbit",
+          "frog"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 624.27,
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 325.06,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=ecd85b9a-882d-4e5b-ba24-fbbe4d4d2eea"
+    },
+    {
+      "id": "r15",
+      "query": "the white drink called milk",
+      "expected": [
+        "milk"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "milk",
+          "my-name",
+          "cow",
+          "parrot",
+          "children"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "milk",
+          "sister",
+          "my-name",
+          "ten",
+          "child"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 565.28,
+          "input_tokens": 6,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 321.08,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=d8fe88c6-8689-4cad-a6a3-76a59d0e2e4a"
+    },
+    {
+      "id": "r16",
+      "query": "what you brush with a toothbrush",
+      "expected": [
+        "teeth"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 0.2,
+        "ids": [
+          "your-name",
+          "how-are-you",
+          "mother",
+          "badaga-question",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "teeth",
+          "mouth",
+          "your-name",
+          "frog",
+          "how-are-you"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 521.77,
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 413.63,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=71430b20-9d65-4847-af22-9799743948af"
+    },
+    {
+      "id": "r17",
+      "query": "what you use to smell a flower",
+      "expected": [
+        "nose"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "your-name",
+          "hunger",
+          "how-are-you",
+          "seven",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.25,
+        "ids": [
+          "your-name",
+          "seven",
+          "how-are-you",
+          "nose",
+          "hunger"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 1398.73,
+          "input_tokens": 8,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 379.78,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=52391097-bdc1-41bc-a0d2-b7bebfd80c7b"
+    },
+    {
+      "id": "r18",
+      "query": "what you use to hear a familiar voice",
+      "expected": [
+        "ear"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "seven",
+          "your-name",
+          "father",
+          "hunger",
+          "how-are-you"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.2,
+        "ids": [
+          "your-name",
+          "seven",
+          "how-are-you",
+          "badaga-question",
+          "ear"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 525.9,
+          "input_tokens": 9,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 304.24,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=d91d97f5-1478-406c-9397-df0623fb67bf"
+    },
+    {
+      "id": "r19",
+      "query": "digits on your hands",
+      "expected": [
+        "fingers"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "ids": [
+          "hands",
+          "mother",
+          "fingers",
+          "your-village",
+          "ear"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "hands",
+          "fingers",
+          "ten",
+          "mother",
+          "two"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 575.78,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 389.22,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=8f9aa5b2-2082-4b00-af5e-83a6d8c14d13"
+    },
+    {
+      "id": "r20",
+      "query": "feeling hungry before a meal",
+      "expected": [
+        "hunger"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "dog",
+          "child",
+          "grandfather",
+          "teeth",
+          "badaga-answer"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "dog",
+          "hunger",
+          "child",
+          "seven",
+          "grandfather"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 2705.22,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 346.59,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=44971fef-8082-4121-a6ca-b215f528360c"
+    },
+    {
+      "id": "r21",
+      "query": "ask someone how they are doing",
+      "expected": [
+        "how-are-you"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "crow",
+          "how-are-you",
+          "elders",
+          "grandmother",
+          "badaga-question"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "how-are-you",
+          "badaga-question",
+          "crow",
+          "elders",
+          "your-name"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 591.57,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 416.07,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=8dfd6fb5-abe0-4127-b83b-d145c6dabeb0"
+    },
+    {
+      "id": "r22",
+      "query": "ask somebody their name",
+      "expected": [
+        "your-name"
+      ],
+      "bm25": {
+        "recall_at_5": 0.0,
+        "mrr": 0.0,
+        "ids": [
+          "my-name",
+          "head",
+          "nose",
+          "grandfather",
+          "mother"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 0.5,
+        "ids": [
+          "my-name",
+          "your-name",
+          "head",
+          "badaga-question",
+          "nose"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 632.87,
+          "input_tokens": 5,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 382.78,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=8bb9b380-0f5b-47f4-bd0f-9896665bb39f"
+    },
+    {
+      "id": "r23",
+      "query": "count one two three small objects",
+      "expected": [
+        "one",
+        "two",
+        "three"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "three",
+          "two",
+          "one",
+          "eight",
+          "nine"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "three",
+          "two",
+          "eight",
+          "six",
+          "one"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 540.32,
+          "input_tokens": 7,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 384.74,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=11ad0c2f-6407-41ad-b631-5783808c3484"
+    },
+    {
+      "id": "r24",
+      "query": "Haalu",
+      "expected": [
+        "milk"
+      ],
+      "bm25": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "milk",
+          "teeth"
+        ]
+      },
+      "hybrid": {
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "ids": [
+          "milk",
+          "teeth",
+          "your-name",
+          "hunger",
+          "child"
+        ],
+        "mode": "hybrid"
+      },
+      "stages": [
+        {
+          "stage": "embedding",
+          "provider": "nebius",
+          "model": "Qwen/Qwen3-Embedding-8B",
+          "latency_ms": 524.38,
+          "input_tokens": 3,
+          "output_tokens": 0,
+          "dimensions": 256
+        },
+        {
+          "stage": "vector-search",
+          "provider": "pinecone",
+          "model": "dense-index",
+          "latency_ms": 294.1,
+          "read_units": 0
+        }
+      ],
+      "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=95059152-2221-44e8-8c3c-c2b23e27e258"
+    }
+  ],
+  "story_cases": [
+    {
+      "focus": "family",
+      "theme": "space",
+      "mode": "live",
+      "title": "The Starlight Family Voyage",
+      "grounded": true,
+      "word_ids": [
+        "mother",
+        "father",
+        "grandmother"
+      ],
+      "evidence": {
+        "id": "49ffb1fcac924fa1a7a4885949b7ef67",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "mother",
+            "rrf_score": 0.032258,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "vector_similarity": 0.423524857,
+            "word": {
+              "id": "mother",
+              "badaga": "Awway",
+              "english": "Mother",
+              "category": "family",
+              "note": "Ask what your family calls your mother.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "father",
+            "rrf_score": 0.031778,
+            "lexical_rank": 1,
+            "semantic_rank": 5,
+            "vector_similarity": 0.410247803,
+            "word": {
+              "id": "father",
+              "badaga": "Appa",
+              "english": "Father",
+              "category": "family",
+              "note": "A familiar family word.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "grandmother",
+            "rrf_score": 0.031545,
+            "lexical_rank": 6,
+            "semantic_rank": 1,
+            "vector_similarity": 0.465439796,
+            "word": {
+              "id": "grandmother",
+              "badaga": "Heththey",
+              "english": "Grandmother",
+              "category": "family",
+              "note": "Listen to how a relative says this.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "elders",
+            "rrf_score": 0.031498,
+            "lexical_rank": 3,
+            "semantic_rank": 4,
+            "vector_similarity": 0.420001984,
+            "word": {
+              "id": "elders",
+              "badaga": "Dhoddavakka",
+              "english": "Elders",
+              "category": "family",
+              "note": "Ask your family how they address older relatives.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "grandfather",
+            "rrf_score": 0.031258,
+            "lexical_rank": 5,
+            "semantic_rank": 3,
+            "vector_similarity": 0.421368599,
+            "word": {
+              "id": "grandfather",
+              "badaga": "Iyya",
+              "english": "Grandfather",
+              "category": "family",
+              "note": "Ask a grandparent about a favourite memory.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "brother",
+            "rrf_score": 0.029857,
+            "lexical_rank": 8,
+            "semantic_rank": 6,
+            "vector_similarity": 0.403055221,
+            "word": {
+              "id": "brother",
+              "badaga": "ANNa",
+              "english": "Elder brother",
+              "category": "family",
+              "note": "Capital letters preserve the source's Roman spelling.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "children",
+            "rrf_score": 0.029631,
+            "lexical_rank": 7,
+            "semantic_rank": 8,
+            "vector_similarity": 0.391451836,
+            "word": {
+              "id": "children",
+              "badaga": "Kunavay",
+              "english": "Children",
+              "category": "family",
+              "note": "Notice the source's separate entry for children.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "child",
+            "rrf_score": 0.015625,
+            "lexical_rank": 4,
+            "semantic_rank": null,
+            "vector_similarity": null,
+            "word": {
+              "id": "child",
+              "badaga": "Koosu",
+              "english": "Child",
+              "category": "family",
+              "note": "A word for a child.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 736.27,
+            "input_tokens": 13,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 342.08,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 4206.87,
+            "input_tokens": 334,
+            "output_tokens": 205
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 347,
+        "output_tokens": 205,
+        "latency_ms": 5300.29,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=5d768907-d251-4887-8917-764739d3eb7e",
+        "focus": "family",
+        "theme": "space",
+        "word_ids": [
+          "mother",
+          "father",
+          "grandmother"
+        ],
+        "at": 1791087329.2198012
+      },
+      "scenes": [
+        {
+          "text": "Mother smiled as she adjusted the star map on the spaceship wall. 'We're going to find the glowing planet, just like you dreamed, little one.'",
+          "word_id": "mother"
+        },
+        {
+          "text": "Father checked the engine with a gentle tap. 'All systems ready, children. Your courage powers this ship more than any fuel.'",
+          "word_id": "father"
+        },
+        {
+          "text": "Grandmother hummed an old lullaby while weaving starlight threads into a blanket. 'This will keep you warm when the universe feels vast.'",
+          "word_id": "grandmother"
+        }
+      ],
+      "family_activity": "Create a family star map using paper, glitter, and crayons. Each family member draws a star for their favorite dream place in space, then shares why it\u2019s special."
+    },
+    {
+      "focus": "garden",
+      "theme": "animals",
+      "mode": "live",
+      "title": "The Day the Forest Friends Met",
+      "grounded": true,
+      "word_ids": [
+        "crow",
+        "dog",
+        "parrot"
+      ],
+      "evidence": {
+        "id": "2c23a23bc9014f53b7108749ae7949a3",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "crow",
+            "rrf_score": 0.032258,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "vector_similarity": 0.453152597,
+            "word": {
+              "id": "crow",
+              "badaga": "Kakke",
+              "english": "Crow",
+              "category": "garden",
+              "note": "Ask someone which birds they remember seeing at home.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "sparrow",
+            "rrf_score": 0.032018,
+            "lexical_rank": 4,
+            "semantic_rank": 1,
+            "vector_similarity": 0.456033707,
+            "word": {
+              "id": "sparrow",
+              "badaga": "Gubbachi",
+              "english": "Sparrow",
+              "category": "garden",
+              "note": "Try a little bird-spotting word game.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "dog",
+            "rrf_score": 0.031025,
+            "lexical_rank": 3,
+            "semantic_rank": 6,
+            "vector_similarity": 0.359741718,
+            "word": {
+              "id": "dog",
+              "badaga": "Nei",
+              "english": "Dog",
+              "category": "garden",
+              "note": "Look for a dog in a photograph or a story.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "parrot",
+            "rrf_score": 0.031025,
+            "lexical_rank": 6,
+            "semantic_rank": 3,
+            "vector_similarity": 0.419835091,
+            "word": {
+              "id": "parrot",
+              "badaga": "Kili",
+              "english": "Parrot",
+              "category": "garden",
+              "note": "A bird from the source's list.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "cat",
+            "rrf_score": 0.03101,
+            "lexical_rank": 5,
+            "semantic_rank": 4,
+            "vector_similarity": 0.388537407,
+            "word": {
+              "id": "cat",
+              "badaga": "Koththi",
+              "english": "Cat",
+              "category": "garden",
+              "note": "Name an animal you might see near home.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "fish",
+            "rrf_score": 0.029851,
+            "lexical_rank": 7,
+            "semantic_rank": 7,
+            "vector_similarity": 0.326914817,
+            "word": {
+              "id": "fish",
+              "badaga": "Meenu",
+              "english": "Fish",
+              "category": "garden",
+              "note": "Name this animal in a drawing or photograph.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "rabbit",
+            "rrf_score": 0.029412,
+            "lexical_rank": 8,
+            "semantic_rank": 8,
+            "vector_similarity": 0.319669724,
+            "word": {
+              "id": "rabbit",
+              "badaga": "Mola",
+              "english": "Rabbit",
+              "category": "garden",
+              "note": "Try finding this animal in a picture book.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "buffalo",
+            "rrf_score": 0.016393,
+            "lexical_rank": 1,
+            "semantic_rank": null,
+            "vector_similarity": null,
+            "word": {
+              "id": "buffalo",
+              "badaga": "Emme",
+              "english": "Buffalo",
+              "category": "garden",
+              "note": "Keep cow and buffalo as separate words.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 663.04,
+            "input_tokens": 15,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 473.71,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 7050.93,
+            "input_tokens": 332,
+            "output_tokens": 207
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 347,
+        "output_tokens": 207,
+        "latency_ms": 8199.04,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=58c3b1b7-614b-408a-b5f9-af600de1376e",
+        "focus": "garden",
+        "theme": "animals",
+        "word_ids": [
+          "crow",
+          "dog",
+          "parrot"
+        ],
+        "at": 1791087337.854326
+      },
+      "scenes": [
+        {
+          "text": "A crow landed on the old oak tree, tilting its head to watch the meadow. 'Hello!' called a tiny sparrow from the grass below, fluttering its wings.",
+          "word_id": "crow"
+        },
+        {
+          "text": "A playful dog trotted over, wagging his tail. 'I\u2019m looking for a friend to play fetch!' he barked, eyes bright with joy.",
+          "word_id": "dog"
+        },
+        {
+          "text": "A parrot perched on a branch, squawking, 'I can help! I know where the hidden acorns are!' The rabbit peeked out from behind a bush, smiling.",
+          "word_id": "parrot"
+        }
+      ],
+      "family_activity": "Draw your favorite animal from the story and write one thing it might say in a friendly voice."
+    },
+    {
+      "focus": "market",
+      "theme": "detective",
+      "mode": "live",
+      "title": "The Picnic Basket Puzzle",
+      "grounded": true,
+      "word_ids": [
+        "five",
+        "three",
+        "eight"
+      ],
+      "evidence": {
+        "id": "68ccc1670f78481098204ab2f0e88547",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "five",
+            "rrf_score": 0.032266,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "vector_similarity": 0.561861038,
+            "word": {
+              "id": "five",
+              "badaga": "Iidu",
+              "english": "Five",
+              "category": "market",
+              "note": "Count five objects; the source includes alternate spellings.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "three",
+            "rrf_score": 0.032018,
+            "lexical_rank": 1,
+            "semantic_rank": 4,
+            "vector_similarity": 0.53555584,
+            "word": {
+              "id": "three",
+              "badaga": "Mooru",
+              "english": "Three",
+              "category": "market",
+              "note": "Count three objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "eight",
+            "rrf_score": 0.031258,
+            "lexical_rank": 5,
+            "semantic_rank": 3,
+            "vector_similarity": 0.541983664,
+            "word": {
+              "id": "eight",
+              "badaga": "Eattu",
+              "english": "Eight",
+              "category": "market",
+              "note": "Count eight objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "six",
+            "rrf_score": 0.031054,
+            "lexical_rank": 7,
+            "semantic_rank": 2,
+            "vector_similarity": 0.561131537,
+            "word": {
+              "id": "six",
+              "badaga": "Aaru",
+              "english": "Six",
+              "category": "market",
+              "note": "Count six objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "two",
+            "rrf_score": 0.031054,
+            "lexical_rank": 2,
+            "semantic_rank": 7,
+            "vector_similarity": 0.520512581,
+            "word": {
+              "id": "two",
+              "badaga": "Eradu",
+              "english": "Two",
+              "category": "market",
+              "note": "Count two objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "one",
+            "rrf_score": 0.030777,
+            "lexical_rank": 4,
+            "semantic_rank": 6,
+            "vector_similarity": 0.52143,
+            "word": {
+              "id": "one",
+              "badaga": "Ondu",
+              "english": "One",
+              "category": "market",
+              "note": "Count one object.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "nine",
+            "rrf_score": 0.029857,
+            "lexical_rank": 6,
+            "semantic_rank": 8,
+            "vector_similarity": 0.491407424,
+            "word": {
+              "id": "nine",
+              "badaga": "Ombathu",
+              "english": "Nine",
+              "category": "market",
+              "note": "Count nine objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "ten",
+            "rrf_score": 0.015385,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "vector_similarity": 0.53279686,
+            "word": {
+              "id": "ten",
+              "badaga": "Hathu",
+              "english": "Ten",
+              "category": "market",
+              "note": "Count all ten fingers.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 550.14,
+            "input_tokens": 10,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 379.34,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 4570.61,
+            "input_tokens": 325,
+            "output_tokens": 199
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 335,
+        "output_tokens": 199,
+        "latency_ms": 5507.9,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=8284fd70-d0f8-48f4-a6ea-b0d6e334411c",
+        "focus": "market",
+        "theme": "detective",
+        "word_ids": [
+          "five",
+          "three",
+          "eight"
+        ],
+        "at": 1791087343.653025
+      },
+      "scenes": [
+        {
+          "text": "Lily found a small picnic basket under the big oak tree. Inside were five colorful cloth napkins, but only four were neatly folded.",
+          "word_id": "five"
+        },
+        {
+          "text": "She counted three red apples, two green ones, and one yellow apple. 'One is missing!' she whispered, eyes wide with curiosity.",
+          "word_id": "three"
+        },
+        {
+          "text": "At the bottom, a note read: 'The secret is hidden where eight meets six. Look near the old stone.' Lily smiled and followed the clue.",
+          "word_id": "eight"
+        }
+      ],
+      "family_activity": "Count the items in a real picnic basket at home and write down how many of each you see. Then, make a drawing of the basket with the missing item added."
+    },
+    {
+      "focus": "kitchen",
+      "theme": "art",
+      "mode": "live",
+      "title": "The Sketchbook That Came to Life",
+      "grounded": true,
+      "word_ids": [
+        "milk",
+        "fingers",
+        "hands"
+      ],
+      "evidence": {
+        "id": "d40fb5a047cb497b95ebf4b77c0cc65f",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "milk",
+            "rrf_score": 0.032787,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "vector_similarity": 0.470267296,
+            "word": {
+              "id": "milk",
+              "badaga": "Haalu",
+              "english": "Milk",
+              "category": "kitchen",
+              "note": "Compare by listening with Hallu, the source's word for teeth.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "fingers",
+            "rrf_score": 0.031754,
+            "lexical_rank": 4,
+            "semantic_rank": 2,
+            "vector_similarity": 0.465566635,
+            "word": {
+              "id": "fingers",
+              "badaga": "Beralu",
+              "english": "Fingers",
+              "category": "kitchen",
+              "note": "Count your fingers using your new number words.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "hands",
+            "rrf_score": 0.031746,
+            "lexical_rank": 3,
+            "semantic_rank": 3,
+            "vector_similarity": 0.458582878,
+            "word": {
+              "id": "hands",
+              "badaga": "Kai",
+              "english": "Hands",
+              "category": "kitchen",
+              "note": "Try a family game: point to your hands.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "teeth",
+            "rrf_score": 0.03101,
+            "lexical_rank": 5,
+            "semantic_rank": 4,
+            "vector_similarity": 0.405445099,
+            "word": {
+              "id": "teeth",
+              "badaga": "Hallu",
+              "english": "Teeth",
+              "category": "kitchen",
+              "note": "Haalu and Hallu are a useful pair to listen to with a speaker.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "mouth",
+            "rrf_score": 0.03009,
+            "lexical_rank": 8,
+            "semantic_rank": 5,
+            "vector_similarity": 0.38002491,
+            "word": {
+              "id": "mouth",
+              "badaga": "Bae",
+              "english": "Mouth",
+              "category": "kitchen",
+              "note": "Point and name in a word game.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "nose",
+            "rrf_score": 0.029631,
+            "lexical_rank": 7,
+            "semantic_rank": 8,
+            "vector_similarity": 0.360961,
+            "word": {
+              "id": "nose",
+              "badaga": "Mookku",
+              "english": "Nose",
+              "category": "kitchen",
+              "note": "Point and name.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "hunger",
+            "rrf_score": 0.016129,
+            "lexical_rank": 2,
+            "semantic_rank": null,
+            "vector_similarity": null,
+            "word": {
+              "id": "hunger",
+              "badaga": "Hasu",
+              "english": "Hunger",
+              "category": "kitchen",
+              "note": "Find a moment to use this word at home.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "eye",
+            "rrf_score": 0.015152,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "vector_similarity": 0.377591133,
+            "word": {
+              "id": "eye",
+              "badaga": "Kannu",
+              "english": "Eye",
+              "category": "kitchen",
+              "note": "A body word to learn by pointing.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 525.42,
+            "input_tokens": 12,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 368.48,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 5280.96,
+            "input_tokens": 337,
+            "output_tokens": 206
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 349,
+        "output_tokens": 206,
+        "latency_ms": 6184.44,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=bbe261ff-514f-448b-a2fd-1cfb063b8706",
+        "focus": "kitchen",
+        "theme": "art",
+        "word_ids": [
+          "milk",
+          "fingers",
+          "hands"
+        ],
+        "at": 1791087350.4847171
+      },
+      "scenes": [
+        {
+          "text": "Lila opened her magical sketchbook and drew a cup of milk that shimmered like moonlight. Suddenly, the milk floated out, warm and sweet, filling the room with a cozy glow.",
+          "word_id": "milk"
+        },
+        {
+          "text": "She traced her fingers on the page, and tiny glowing fingers danced across the paper, tapping out a secret rhythm only she could hear.",
+          "word_id": "fingers"
+        },
+        {
+          "text": "With both hands, Lila held the sketchbook close, feeling its heartbeat. The pages whispered stories, and she knew she was part of something wonderful.",
+          "word_id": "hands"
+        }
+      ],
+      "family_activity": "Draw a silly creature using only your hands and fingers as shapes. Share your drawings and make up a fun name for your creature together."
+    },
+    {
+      "focus": "hello",
+      "theme": "detective",
+      "mode": "live",
+      "title": "The Picnic Basket Mystery",
+      "grounded": true,
+      "word_ids": [
+        "how-are-you",
+        "my-name",
+        "badaga-answer"
+      ],
+      "evidence": {
+        "id": "6a4c3680f2fc43e2b1aa998a026c4167",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "how-are-you",
+            "rrf_score": 0.032522,
+            "lexical_rank": 1,
+            "semantic_rank": 2,
+            "vector_similarity": 0.486063957,
+            "word": {
+              "id": "how-are-you",
+              "badaga": "Ollenge iddiya?",
+              "english": "How are you?",
+              "category": "hello",
+              "note": "A conversation starter. Ask your family which form they use with an elder.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "your-name",
+            "rrf_score": 0.032522,
+            "lexical_rank": 2,
+            "semantic_rank": 1,
+            "vector_similarity": 0.511178076,
+            "word": {
+              "id": "your-name",
+              "badaga": "Ninna hesaru aena?",
+              "english": "What is your name?",
+              "category": "hello",
+              "note": "Use this in an introduction with a friend.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "badaga-question",
+            "rrf_score": 0.031498,
+            "lexical_rank": 3,
+            "semantic_rank": 4,
+            "vector_similarity": 0.43690303,
+            "word": {
+              "id": "badaga-question",
+              "badaga": "Nee ondu Badagana?",
+              "english": "Are you a Badaga?",
+              "category": "hello",
+              "note": "An identity question documented in the source.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "my-name",
+            "rrf_score": 0.031498,
+            "lexical_rank": 4,
+            "semantic_rank": 3,
+            "vector_similarity": 0.463316947,
+            "word": {
+              "id": "my-name",
+              "badaga": "Enna hesaru Bhoja",
+              "english": "My name is Bhoja",
+              "category": "hello",
+              "note": "Bhoja is the example name in the source; practise with your own name together.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "your-village",
+            "rrf_score": 0.030769,
+            "lexical_rank": 5,
+            "semantic_rank": 5,
+            "vector_similarity": 0.41229105,
+            "word": {
+              "id": "your-village",
+              "badaga": "Ninna Hatti edu?",
+              "english": "Which is your village?",
+              "category": "hello",
+              "note": "Ask a relative about the village your family knows.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "badaga-answer",
+            "rrf_score": 0.030303,
+            "lexical_rank": 6,
+            "semantic_rank": 6,
+            "vector_similarity": 0.398430824,
+            "word": {
+              "id": "badaga-answer",
+              "badaga": "Ha, Na ondu Badaga",
+              "english": "Yes, I am a Badaga",
+              "category": "hello",
+              "note": "A short reply to the identity question.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 1739.24,
+            "input_tokens": 14,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 415.23,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 8874.43,
+            "input_tokens": 333,
+            "output_tokens": 231
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 347,
+        "output_tokens": 231,
+        "latency_ms": 11040.24,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=3c119d1e-8b29-4168-9c2c-b8c69632c421",
+        "focus": "hello",
+        "theme": "detective",
+        "word_ids": [
+          "how-are-you",
+          "my-name",
+          "badaga-answer"
+        ],
+        "at": 1791087362.0289578
+      },
+      "scenes": [
+        {
+          "text": "Lily found a small, dusty picnic basket under the old oak tree. She opened it gently and saw a note that said, 'How are you?' in shaky handwriting.",
+          "word_id": "how-are-you"
+        },
+        {
+          "text": "A little boy with a curious smile appeared. 'What is your name?' he asked. Lily smiled back and said, 'My name is Bhoja.'",
+          "word_id": "my-name"
+        },
+        {
+          "text": "The boy nodded. 'Which is your village?' he asked. 'And are you a Badaga?' Lily thought for a moment and answered, 'Yes, I am a Badaga.'",
+          "word_id": "badaga-answer"
+        }
+      ],
+      "family_activity": "Draw a picture of a picnic basket with a note inside. Write a kind question like 'How are you?' or 'What is your name?' on the note. Share it with a family member."
+    },
+    {
+      "focus": "family",
+      "theme": "art",
+      "mode": "live",
+      "title": "The Magic Sketchbook of Family",
+      "grounded": true,
+      "word_ids": [
+        "grandmother",
+        "father",
+        "brother"
+      ],
+      "evidence": {
+        "id": "8b19c30951894484ae36705a475a4d42",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "mother",
+            "rrf_score": 0.032258,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "vector_similarity": 0.42301178,
+            "word": {
+              "id": "mother",
+              "badaga": "Awway",
+              "english": "Mother",
+              "category": "family",
+              "note": "Ask what your family calls your mother.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "father",
+            "rrf_score": 0.031778,
+            "lexical_rank": 1,
+            "semantic_rank": 5,
+            "vector_similarity": 0.409249306,
+            "word": {
+              "id": "father",
+              "badaga": "Appa",
+              "english": "Father",
+              "category": "family",
+              "note": "A familiar family word.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "grandmother",
+            "rrf_score": 0.031545,
+            "lexical_rank": 6,
+            "semantic_rank": 1,
+            "vector_similarity": 0.464968681,
+            "word": {
+              "id": "grandmother",
+              "badaga": "Heththey",
+              "english": "Grandmother",
+              "category": "family",
+              "note": "Listen to how a relative says this.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "elders",
+            "rrf_score": 0.031498,
+            "lexical_rank": 3,
+            "semantic_rank": 4,
+            "vector_similarity": 0.419779778,
+            "word": {
+              "id": "elders",
+              "badaga": "Dhoddavakka",
+              "english": "Elders",
+              "category": "family",
+              "note": "Ask your family how they address older relatives.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "grandfather",
+            "rrf_score": 0.031258,
+            "lexical_rank": 5,
+            "semantic_rank": 3,
+            "vector_similarity": 0.421285629,
+            "word": {
+              "id": "grandfather",
+              "badaga": "Iyya",
+              "english": "Grandfather",
+              "category": "family",
+              "note": "Ask a grandparent about a favourite memory.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "brother",
+            "rrf_score": 0.029857,
+            "lexical_rank": 8,
+            "semantic_rank": 6,
+            "vector_similarity": 0.402637511,
+            "word": {
+              "id": "brother",
+              "badaga": "ANNa",
+              "english": "Elder brother",
+              "category": "family",
+              "note": "Capital letters preserve the source's Roman spelling.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "children",
+            "rrf_score": 0.029631,
+            "lexical_rank": 7,
+            "semantic_rank": 8,
+            "vector_similarity": 0.391233444,
+            "word": {
+              "id": "children",
+              "badaga": "Kunavay",
+              "english": "Children",
+              "category": "family",
+              "note": "Notice the source's separate entry for children.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          },
+          {
+            "id": "child",
+            "rrf_score": 0.015625,
+            "lexical_rank": 4,
+            "semantic_rank": null,
+            "vector_similarity": null,
+            "word": {
+              "id": "child",
+              "badaga": "Koosu",
+              "english": "Child",
+              "category": "family",
+              "note": "A word for a child.",
+              "source_id": "jp-family",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-family",
+                "title": "Family relationships \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/2019/04/28/learn-badaga-5/",
+                "checked": "2026-10-03",
+                "note": "Contributor spelling retained; families may use other forms."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 558.18,
+            "input_tokens": 13,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 366.28,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 7841.88,
+            "input_tokens": 336,
+            "output_tokens": 214
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 349,
+        "output_tokens": 214,
+        "latency_ms": 8776.79,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=d6f61be1-d09c-4eaf-af5a-2e5668be2fc3",
+        "focus": "family",
+        "theme": "art",
+        "word_ids": [
+          "grandmother",
+          "father",
+          "brother"
+        ],
+        "at": 1791087371.195106
+      },
+      "scenes": [
+        {
+          "text": "Lily opened her grandmother's old sketchbook and saw a glowing pencil. 'What if I draw my family?' she whispered, and the pages shimmered with light.",
+          "word_id": "grandmother"
+        },
+        {
+          "text": "She drew her father smiling by the garden gate, and suddenly, the drawing waved. 'I'm here, Lily!' he said, stepping out with a chuckle.",
+          "word_id": "father"
+        },
+        {
+          "text": "Next, she drew her brother playing with a kite. The paper fluttered, and he laughed, 'Let's fly together!' The sky filled with colors from their shared joy.",
+          "word_id": "brother"
+        }
+      ],
+      "family_activity": "Draw your family members using crayons or colored pencils. Then, share one special thing you love about each person. Talk about your drawing together."
+    },
+    {
+      "focus": "garden",
+      "theme": "space",
+      "mode": "live",
+      "title": "The Space Zoo Adventure",
+      "grounded": true,
+      "word_ids": [
+        "crow",
+        "sparrow",
+        "dog"
+      ],
+      "evidence": {
+        "id": "44c95ece4e1b4a5d9a2e502314ad7a55",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "crow",
+            "rrf_score": 0.032258,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "vector_similarity": 0.453837335,
+            "word": {
+              "id": "crow",
+              "badaga": "Kakke",
+              "english": "Crow",
+              "category": "garden",
+              "note": "Ask someone which birds they remember seeing at home.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "sparrow",
+            "rrf_score": 0.032018,
+            "lexical_rank": 4,
+            "semantic_rank": 1,
+            "vector_similarity": 0.457481384,
+            "word": {
+              "id": "sparrow",
+              "badaga": "Gubbachi",
+              "english": "Sparrow",
+              "category": "garden",
+              "note": "Try a little bird-spotting word game.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "dog",
+            "rrf_score": 0.031025,
+            "lexical_rank": 3,
+            "semantic_rank": 6,
+            "vector_similarity": 0.361769229,
+            "word": {
+              "id": "dog",
+              "badaga": "Nei",
+              "english": "Dog",
+              "category": "garden",
+              "note": "Look for a dog in a photograph or a story.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "parrot",
+            "rrf_score": 0.031025,
+            "lexical_rank": 6,
+            "semantic_rank": 3,
+            "vector_similarity": 0.421219826,
+            "word": {
+              "id": "parrot",
+              "badaga": "Kili",
+              "english": "Parrot",
+              "category": "garden",
+              "note": "A bird from the source's list.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "cat",
+            "rrf_score": 0.03101,
+            "lexical_rank": 5,
+            "semantic_rank": 4,
+            "vector_similarity": 0.389462471,
+            "word": {
+              "id": "cat",
+              "badaga": "Koththi",
+              "english": "Cat",
+              "category": "garden",
+              "note": "Name an animal you might see near home.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "fish",
+            "rrf_score": 0.029851,
+            "lexical_rank": 7,
+            "semantic_rank": 7,
+            "vector_similarity": 0.328290015,
+            "word": {
+              "id": "fish",
+              "badaga": "Meenu",
+              "english": "Fish",
+              "category": "garden",
+              "note": "Name this animal in a drawing or photograph.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "rabbit",
+            "rrf_score": 0.029412,
+            "lexical_rank": 8,
+            "semantic_rank": 8,
+            "vector_similarity": 0.321240425,
+            "word": {
+              "id": "rabbit",
+              "badaga": "Mola",
+              "english": "Rabbit",
+              "category": "garden",
+              "note": "Try finding this animal in a picture book.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "buffalo",
+            "rrf_score": 0.016393,
+            "lexical_rank": 1,
+            "semantic_rank": null,
+            "vector_similarity": null,
+            "word": {
+              "id": "buffalo",
+              "badaga": "Emme",
+              "english": "Buffalo",
+              "category": "garden",
+              "note": "Keep cow and buffalo as separate words.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 1366.16,
+            "input_tokens": 15,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 340.78,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 7342.78,
+            "input_tokens": 332,
+            "output_tokens": 211
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 347,
+        "output_tokens": 211,
+        "latency_ms": 9061.25,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=47f6d945-00de-48e5-b860-a9de8b97e30b",
+        "focus": "garden",
+        "theme": "space",
+        "word_ids": [
+          "crow",
+          "sparrow",
+          "dog"
+        ],
+        "at": 1791087380.767922
+      },
+      "scenes": [
+        {
+          "text": "On a quiet morning, the family found a glowing space pod in their backyard. Inside, a tiny crow with shimmering feathers chirped, 'Welcome to Planet Ziboo!'.",
+          "word_id": "crow"
+        },
+        {
+          "text": "They followed a trail of sparkles to a meadow where a sparrow danced on a floating leaf. 'The parrot is lost,' it sang, 'he needs help to find his way home.'",
+          "word_id": "sparrow"
+        },
+        {
+          "text": "A friendly dog with star-shaped spots barked, 'I\u2019ll help! Let\u2019s search the sky gardens!' The family smiled, ready to explore together.",
+          "word_id": "dog"
+        }
+      ],
+      "family_activity": "Draw your favorite space animal and write one thing it might say in space. Share your drawings with your family."
+    },
+    {
+      "focus": "market",
+      "theme": "animals",
+      "mode": "live",
+      "title": "The Number Garden Adventure",
+      "grounded": true,
+      "word_ids": [
+        "five",
+        "three",
+        "eight"
+      ],
+      "evidence": {
+        "id": "496ef150925943e8800f43f2e15c52d4",
+        "cached": false,
+        "prompt_version": "story-v2.0",
+        "corpus_fingerprint": "c92b6eb30218847e",
+        "retrieval_mode": "hybrid",
+        "candidates": [
+          {
+            "id": "five",
+            "rrf_score": 0.032266,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "vector_similarity": 0.562253952,
+            "word": {
+              "id": "five",
+              "badaga": "Iidu",
+              "english": "Five",
+              "category": "market",
+              "note": "Count five objects; the source includes alternate spellings.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "three",
+            "rrf_score": 0.032018,
+            "lexical_rank": 1,
+            "semantic_rank": 4,
+            "vector_similarity": 0.536393166,
+            "word": {
+              "id": "three",
+              "badaga": "Mooru",
+              "english": "Three",
+              "category": "market",
+              "note": "Count three objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "eight",
+            "rrf_score": 0.031258,
+            "lexical_rank": 5,
+            "semantic_rank": 3,
+            "vector_similarity": 0.542853415,
+            "word": {
+              "id": "eight",
+              "badaga": "Eattu",
+              "english": "Eight",
+              "category": "market",
+              "note": "Count eight objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "six",
+            "rrf_score": 0.031054,
+            "lexical_rank": 7,
+            "semantic_rank": 2,
+            "vector_similarity": 0.561647475,
+            "word": {
+              "id": "six",
+              "badaga": "Aaru",
+              "english": "Six",
+              "category": "market",
+              "note": "Count six objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "two",
+            "rrf_score": 0.031054,
+            "lexical_rank": 2,
+            "semantic_rank": 7,
+            "vector_similarity": 0.520813,
+            "word": {
+              "id": "two",
+              "badaga": "Eradu",
+              "english": "Two",
+              "category": "market",
+              "note": "Count two objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "one",
+            "rrf_score": 0.030777,
+            "lexical_rank": 4,
+            "semantic_rank": 6,
+            "vector_similarity": 0.521455765,
+            "word": {
+              "id": "one",
+              "badaga": "Ondu",
+              "english": "One",
+              "category": "market",
+              "note": "Count one object.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "nine",
+            "rrf_score": 0.029857,
+            "lexical_rank": 6,
+            "semantic_rank": 8,
+            "vector_similarity": 0.491782218,
+            "word": {
+              "id": "nine",
+              "badaga": "Ombathu",
+              "english": "Nine",
+              "category": "market",
+              "note": "Count nine objects.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          },
+          {
+            "id": "ten",
+            "rrf_score": 0.015385,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "vector_similarity": 0.533228874,
+            "word": {
+              "id": "ten",
+              "badaga": "Hathu",
+              "english": "Ten",
+              "category": "market",
+              "note": "Count all ten fingers.",
+              "source_id": "jp-learn",
+              "review_status": "source-documented",
+              "source": {
+                "id": "jp-learn",
+                "title": "Learn Badaga \u00b7 Bellie Jayaprakash",
+                "url": "https://badaga.co/learn-badaga/",
+                "checked": "2026-10-03",
+                "note": "Published community vocabulary; local speaker review is pending."
+              }
+            }
+          }
+        ],
+        "stages": [
+          {
+            "stage": "embedding",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-Embedding-8B",
+            "latency_ms": 532.28,
+            "input_tokens": 10,
+            "output_tokens": 0,
+            "dimensions": 256
+          },
+          {
+            "stage": "vector-search",
+            "provider": "pinecone",
+            "model": "dense-index",
+            "latency_ms": 318.14,
+            "read_units": 0
+          },
+          {
+            "stage": "generation",
+            "provider": "nebius",
+            "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "latency_ms": 9636.93,
+            "input_tokens": 324,
+            "output_tokens": 211
+          }
+        ],
+        "degraded_reason": null,
+        "schema_rejected": false,
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "input_tokens": 334,
+        "output_tokens": 211,
+        "latency_ms": 10497.18,
+        "cost_usd": null,
+        "trace_url": "https://www.braintrust.dev/app/siva-project/object?object_type=project_logs&object_id=e26b5c6a-8082-4546-8cad-74bdc4357de0&id=7e86e680-f5b9-4feb-9077-d4d4326cdcec",
+        "focus": "market",
+        "theme": "animals",
+        "word_ids": [
+          "five",
+          "three",
+          "eight"
+        ],
+        "at": 1791087391.81502
+      },
+      "scenes": [
+        {
+          "text": "Luna the fox found a glowing path leading through the meadow, marked with tiny numbers. She counted five bright flowers blooming in a circle, each glowing with a different color.",
+          "word_id": "five"
+        },
+        {
+          "text": "A shy rabbit named Pip hopped over, holding three shiny pebbles. 'I lost my way,' he whispered. 'Can we find the path to the Number Garden together?'",
+          "word_id": "three"
+        },
+        {
+          "text": "They followed the path past eight singing stones, each humming a different note. At the end, a tree with ten golden leaves waved gently, welcoming them home.",
+          "word_id": "eight"
+        }
+      ],
+      "family_activity": "Draw a garden with numbered flowers. Count and color five flowers, then add three more. Talk about what you\u2019d name the garden."
+    }
+  ],
+  "guard_cases": [
+    {
+      "id": "unknown-word",
+      "passed": true
+    },
+    {
+      "id": "duplicate-reference",
+      "passed": true
+    },
+    {
+      "id": "source-instruction-as-id",
+      "passed": true
+    },
+    {
+      "id": "unexpected-translation-field",
+      "passed": true
+    },
+    {
+      "id": "markup-in-narrative",
+      "passed": true
+    },
+    {
+      "id": "empty-model-response",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Small curated English query dataset; no held-out community validation.",
+    "Known word references and schema checks do not certify pronunciation or cultural correctness.",
+    "Source documented vocabulary is awaiting fluent speaker review.",
+    "Cached stories do not make new model calls; reported dollar cost remains unknown."
+  ]
+}

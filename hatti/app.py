@@ -1,15 +1,20 @@
 """Stateless Python server. Family voices never leave the browser."""
 from datetime import date
+import hmac
+import time
+from collections import deque
 from pathlib import Path
 from typing import Literal
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from .content import LESSON_BY_ID, WORD_BY_ID, bootstrap
 from .engine import due_review, grade, lesson_payload, quiz_payload, schedule_review, retrieve
 from .guide import guidance
+from .rag import RagService, StoryRequest, THEMES
+from .observability import metrics, EVAL
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -32,8 +37,11 @@ class ReviewRequest(BaseModel):
 class GuideRequest(BaseModel):
     topic: Literal["start", "family", "variants", "numbers", "listening"]
 
-def create_app():
+def create_app(settings=None, transport=None):
     application = FastAPI(title="Hatti Quest", description="Family-supported Badaga learning", docs_url="/api/docs")
+    rag = RagService(settings, transport)
+    application.state.rag = rag
+    budget = deque()
     application.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
     templates = Jinja2Templates(directory=ROOT / "templates")
 
@@ -62,9 +70,70 @@ def create_app():
     async def home(request: Request):
         return templates.TemplateResponse(request=request, name="index.html", context={})
 
+    @application.get("/demo", response_class=HTMLResponse)
+    async def demo_slides(request: Request):
+        return templates.TemplateResponse(request=request, name="demo.html", context={})
+
     @application.get("/health")
     async def health():
-        return {"status": "ok", "version": "1.0.0"}
+        return {"status": "ok", "version": "2.0.0"}
+
+    def allow_ops(request):
+        token = rag.settings.ops_token
+        supplied = request.headers.get("authorization", "").removeprefix("Bearer ")
+        if token:
+            permitted = hmac.compare_digest(token.encode(), supplied.encode())
+        else:
+            permitted = bool(request.client and request.client.host in ("127.0.0.1", "::1", "testclient"))
+        if not permitted:
+            raise HTTPException(403, "Operations data requires local access or an operations token")
+
+    @application.get("/lab", response_class=HTMLResponse)
+    async def lab(request: Request):
+        return templates.TemplateResponse(request=request, name="lab.html", context={})
+
+    @application.get("/metrics")
+    async def prometheus_metrics():
+        import json
+        report = ROOT / "evals" / "reports" / "latest.json"
+        if report.exists():
+            data = json.loads(report.read_text())
+            for system in ("bm25", "hybrid"):
+                for metric, value in data["metrics"][system].items():
+                    EVAL.labels(metric, system).set(value)
+            for metric in ("story_grounding", "guard_pass_rate", "live_generation_rate"):
+                EVAL.labels(metric, "story-pipeline").set(data["metrics"][metric])
+        return Response(content=metrics(), media_type="text/plain; version=0.0.4")
+
+    @application.get("/api/ai/options")
+    async def ai_options():
+        return {"live_enabled": rag.settings.generation_ready, "themes": THEMES}
+
+    @application.post("/api/ai/story")
+    async def ai_story(body: StoryRequest):
+        now = time.monotonic()
+        while budget and budget[0] < now - 60:
+            budget.popleft()
+        # Process-wide spend protection without collecting child IP addresses.
+        if len(budget) >= rag.settings.rate_per_minute:
+            raise HTTPException(429, "Story studio is taking a small pause. Try again in a minute.")
+        budget.append(now)
+        try:
+            return await rag.story(body)
+        except ValueError:
+            raise HTTPException(422, "Choose documented words from the selected topic") from None
+
+    @application.get("/api/ai/status")
+    async def ai_status(request: Request):
+        allow_ops(request)
+        return rag.status()
+
+    @application.get("/api/ai/evals")
+    async def ai_evals(request: Request):
+        allow_ops(request)
+        import json
+        report = ROOT / "evals" / "reports" / "latest.json"
+        return json.loads(report.read_text()) if report.exists() else {"status": "not-run", "cases": []}
 
     @application.get("/api/content")
     async def content():

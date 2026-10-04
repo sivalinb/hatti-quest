@@ -364,6 +364,61 @@
     a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 5000);
   }
+  async function makeStory() {
+    const trigger = $('create-story');
+    trigger.disabled = true;
+    $('studio-status').textContent = 'Packing a few words from home…';
+    try {
+      const focus = $('story-focus').value;
+      const story = await api('/api/ai/story', {focus, theme: $('story-theme').value,
+        review_word_ids: dueWords.filter(w => w.category === focus).slice(0, 3).map(w => w.id)});
+      const target = $('studio-story');
+      target.replaceChildren(element('h3', 'story-title', `${story.icon} ${story.title}`));
+      const scenes = element('div', 'story-scenes');
+      for (const [index, scene] of story.scenes.entries()) {
+        const card = element('article', 'story-scene');
+        card.append(element('span', 'story-step', `CHAPTER ${index + 1}`), element('p', 'story-prose', scene.text));
+        const word = element('div', 'story-word');
+        word.append(element('strong', '', scene.word.badaga), element('span', '', scene.word.english));
+        card.append(word, sourceLink(scene.word));
+        const voice = await getVoice(scene.word.id).catch(() => null);
+        if (voice) card.append(button('▶ A familiar voice', 'text-button', () => playVoice(voice)));
+        const challenge = element('details', 'story-challenge');
+        challenge.append(element('summary', '', 'Try a little word game'));
+        challenge.append(element('p', '', scene.challenge.prompt));
+        const choices = element('div', 'story-choices');
+        for (const choice of scene.challenge.choices) {
+          choices.append(button(choice.label, 'quiz-choice', async () => {
+            choices.querySelectorAll('button').forEach(b => {b.disabled = true;});
+            try {
+              const result = await api('/api/answer', {word_id: scene.word.id, choice_id: choice.id,
+                today: today(), prior: state.recall[scene.word.id] || null});
+              state.recall[scene.word.id] = result.review;
+              if (result.correct && !state.learned.includes(scene.word.id)) state.learned.push(scene.word.id);
+              saveState(); refreshAdventure(); await refreshReviews();
+              challenge.append(element('p', 'quiz-feedback', `${result.message} ${result.word.badaga} · ${result.word.english}`));
+            } catch (error) {choices.querySelectorAll('button').forEach(b => {b.disabled = false;}); throw error;}
+          }));
+        }
+        challenge.append(choices); card.append(challenge); scenes.append(card);
+      }
+      target.append(scenes);
+      const activity = element('div', 'story-activity');
+      activity.append(element('strong', '', 'Take the story off the screen'), element('p', '', story.family_activity));
+      target.append(activity);
+      const live = ['live', 'cached-live'].includes(story.mode);
+      $('studio-status').textContent = `${live ? '✦ AI story' : '✧ Authored story'} · source-linked words · ${story.evidence.cached ? 'saved adventure' : 'a fresh little adventure'}`;
+      const evidence = element('details', 'story-evidence');
+      evidence.append(element('summary', '', 'For grown-ups: see the sources behind this story'));
+      evidence.append(element('p', '', `Word cards: ${story.review_status}. ${live ? 'English fiction generated with AI.' : 'English fiction from the authored fallback.'} Retrieval: ${story.evidence.retrieval_mode}. Family recordings stay on this device.`));
+      const links = element('div', 'resource-links');
+      for (const scene of story.scenes) links.append(sourceLink(scene.word));
+      evidence.append(links); target.append(evidence);
+      target.scrollIntoView({behavior: 'smooth', block: 'start'});
+    } catch (error) {
+      $('studio-status').textContent = error.message.includes('429') ? 'The studio is taking a little pause. Try again in a minute.' : 'That adventure could not load. Please try again.';
+    } finally {trigger.disabled = false;}
+  }
   async function bootstrap() {
     content = await api('/api/content'); state = loadState();
     $('voice-word').replaceChildren(...content.words.map(w => {const option = element('option', '', `${w.badaga} — ${w.english}`); option.value = w.id; return option;}));
@@ -372,6 +427,7 @@
   }
   document.querySelectorAll('[data-view],[data-go]').forEach(b => b.addEventListener('click', () => go(b.dataset.view || b.dataset.go)));
   $('start-quest').addEventListener('click', () => {if (booted) run(() => startLesson($('start-quest').dataset.lesson));});
+  $('create-story').addEventListener('click', () => {if (booted) run(makeStory);});
   $('start-review').addEventListener('click', () => run(startReview));
   $('close-quest').addEventListener('click', closeQuest);
   $('quest-dialog').addEventListener('close', stopPlayback);

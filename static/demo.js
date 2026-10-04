@@ -1,0 +1,1 @@
+(() => {const id = new URLSearchParams(location.search).get('slide') || 'origin'; const allowed = ['origin','badaga','script','distance','extension']; document.getElementById('slide-' + (allowed.includes(id) ? id : 'origin')).hidden = false;})();
