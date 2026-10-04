@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f38">
+  <meta name="description" content="Little adventures. Familiar voices. A playful way for Badaga children growing up abroad to bring their language home.">
+  <title>Hatti Quest · A little closer to home</title>
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to adventure</a>
+  <header class="site-header">
+    <a class="brand" href="#adventure" aria-label="Hatti Quest home"><span class="brand-mark" aria-hidden="true">h.</span><span>hatti<span class="brand-light">quest</span><small>A LITTLE CLOSER TO HOME</small></span></a>
+    <nav aria-label="Main navigation">
+      <button class="nav-button active" data-view="adventure" aria-current="page">Adventure</button>
+      <button class="nav-button" data-view="basket">Word basket</button>
+      <button class="nav-button" data-view="family">Family corner</button>
+      <button class="nav-button" data-view="story">Our story</button>
+    </nav>
+    <span class="header-seed" title="Words you have recognised"><span aria-hidden="true">✦</span> <strong id="header-count">0</strong> words</span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="view" id="view-adventure" aria-labelledby="adventure-heading">
+      <div class="welcome-line"><div><p class="eyebrow">FOR LITTLE EXPLORERS, EVERYWHERE</p><h1 id="adventure-heading">Big adventures.<br><span>A little closer to home.</span></h1><p class="intro">A few Badaga words. A familiar voice.<br>Bring a little of home into every day.</p></div><div class="daily-note"><span aria-hidden="true">☀</span><div><strong>Your own little pace</strong><p>One adventure takes about 3 minutes.<br>Come back whenever you like.</p></div></div></div>
+      <div class="adventure-grid">
+        <div class="trail-card">
+          <div class="trail-heading"><div><p class="eyebrow">YOUR FIRST CHAPTER</p><h2>A visit to the hills</h2></div><span class="pill" id="trail-progress">0 / 5 adventures</span></div>
+          <div class="trail-map" aria-label="Choose an adventure in an imaginary village in the hills">
+            <img class="landscape" src="/static/assets/hatti-landscape.png" alt="An illustrated winding path through green hills, village homes and blue mountains" fetchpriority="high">
+            <div class="map-intro"><span class="map-chip">✧ Follow your curiosity</span></div>
+            <div id="quest-nodes"></div>
+            <span class="map-caption">A storybook trail inspired by the Nilgiri Hills</span>
+          </div>
+          <div class="trail-bottom"><span>👣 Every stop is open. Pick one that feels like you.</span><button class="text-button" id="map-help">Help me begin ↗</button></div>
+        </div>
+        <aside class="adventure-sidebar">
+          <div class="next-card"><p class="eyebrow">A SMALL START, A BIG CONNECTION</p><div class="large-icon" id="next-icon" aria-hidden="true">👋</div><h2 id="next-title">Hello, home</h2><p id="next-description">Start with a few words to begin a conversation.</p><div class="meta"><span>◷ 3 minutes</span><span>5 words</span></div><button class="button primary" id="start-quest">Let’s go <span aria-hidden="true">→</span></button></div>
+          <div class="review-card"><span class="review-icon" aria-hidden="true">🌱</span><div><h3>A little refresh</h3><p id="review-description">Your new words will return for a gentle practice.</p></div><button class="text-button" id="start-review" disabled>Review →</button></div>
+          <div class="family-tip"><p class="eyebrow">MADE BETTER, TOGETHER</p><p>Imagine learning a word in your grandparent’s voice.</p><button class="text-button" data-go="family">Add a family voice ↗</button></div>
+        </aside>
+      </div>
+      <div class="journey-strip"><div><span aria-hidden="true">✦</span><strong id="learned-count">0</strong><small>words recognised</small></div><div><span aria-hidden="true">🏡</span><strong id="family-count">0</strong><small>family moments</small></div><div><span aria-hidden="true">🌿</span><strong id="badge-count">0</strong><small>adventure badges</small></div><p>Every little word is<br>a connection worth keeping.</p></div>
+      <div class="badge-shelf" id="badges" aria-label="Your adventure badges"></div>
+    </section>
+
+    <section class="view" id="view-basket" aria-labelledby="basket-heading" hidden>
+      <div class="section-heading"><p class="eyebrow">COLLECT A LITTLE OF HOME</p><h1 id="basket-heading">Your word basket</h1><p>Find a word. Hear a familiar voice. Try it together.</p></div>
+      <div class="search-row"><label class="search-label"><span aria-hidden="true">⌕</span><input id="word-search" type="search" placeholder="Find a word in English or Badaga…" maxlength="120" aria-label="Find a word in English or Badaga"></label><label class="filter-label"><span class="sr-only">Word category</span><select id="word-category"><option value="">Every little word</option><option value="hello">Conversations</option><option value="family">Family</option><option value="kitchen">Everyday life</option><option value="garden">Nature</option><option value="market">Numbers</option></select></label></div>
+      <p id="search-summary" class="muted" aria-live="polite"></p><div class="word-grid" id="word-results"></div>
+      <p class="source-note">Source spellings are preserved. Your family may say things differently; their voice belongs here too.</p>
+    </section>
+
+    <section class="view" id="view-family" aria-labelledby="family-heading" hidden>
+      <div class="section-heading"><p class="eyebrow">FOR GROWN-UPS & LITTLE EXPLORERS</p><h1 id="family-heading">Home has a voice.</h1><p>A word from a parent. A phrase from a grandparent.<br>Make the next adventure sound like your family.</p></div>
+      <div class="family-layout"><div class="panel recording-panel"><span class="tag">A FAMILY GROWN-UP’S CORNER</span><h2>Keep a familiar voice</h2><p>Choose a word and ask a speaker to say it slowly. Save a short recording for this browser.</p><label for="voice-word">Which word shall we record?</label><select id="voice-word"></select><div class="record-word" id="record-word"></div><label for="speaker-label">Who’s speaking? <span class="muted">(optional)</span></label><input id="speaker-label" maxlength="40" placeholder="e.g. Grandparent or Appa" autocomplete="off"><div class="record-controls"><button class="button primary" id="record-voice">● Record a family voice</button><label class="button secondary file-label">Choose audio<input id="audio-upload" type="file" accept="audio/*" class="sr-only"></label></div><p id="record-status" class="record-status" aria-live="polite">Up to 20 seconds. Use your own family recording.</p><div id="record-preview"></div><p class="privacy-note">🔒 Recordings stay in this browser on this device. They are never uploaded. Other devices need their own recordings; clearing browser data removes them.</p></div><div class="family-side"><div class="panel"><p class="eyebrow">A HELPFUL LITTLE GUIDE</p><h2>Make it an everyday thing</h2><div class="topic-buttons" id="guide-topics"><button data-topic="start">Where do we begin?</button><button data-topic="family">Learn with family</button><button data-topic="variants">We say it differently</button><button data-topic="numbers">A counting game</button><button data-topic="listening">Practise listening</button></div><div class="guide-response" id="guide-response" aria-live="polite"><p>Pick a prompt for an idea you can try together.</p></div></div><div class="panel family-missions"><p class="eyebrow">FROM THE SCREEN TO THE SOFA</p><h2>Little family moments</h2><div id="family-missions"></div></div></div></div>
+      <div class="panel saved-panel"><div class="panel-heading"><div><p class="eyebrow">YOUR FAMILY’S WORD BASKET</p><h2>Saved voices <span id="voice-count" class="muted">0</span></h2></div><button class="text-button" id="refresh-voices">Refresh ↻</button></div><div id="saved-voices" class="saved-voices"><p class="muted">Your first family voice will appear here.</p></div></div>
+      <details class="parent-details"><summary>For grown-ups: learning content, privacy & progress</summary><div><p>This starter contains 50 source-documented words and phrases. Community speaker review is pending. Roman spelling, pronunciation and respectful forms can vary. Ask a fluent speaker to check forms before teaching them as your family’s preferred usage.</p><p>Pronunciation practice means listening together. Hatti Quest does not automatically score accents or invent Badaga speech. The guide uses authored tips and source-linked words; an optional configured model may select existing content.</p><p>Progress is saved locally without an account. Export a progress file to keep a backup or move it to another browser. Audio is separate and is not included in this export.</p><div class="backup-controls"><button class="button secondary" id="export-progress">Export progress</button><label class="button secondary file-label">Import progress<input type="file" id="import-progress" accept="application/json,.json" class="sr-only"></label><button class="text-button danger" id="reset-progress">Reset learning progress</button></div><p id="backup-status" aria-live="polite"></p><div class="resource-links"><a href="https://badaga.co/learn-badaga/" target="_blank" rel="noopener noreferrer">Community vocabulary ↗</a><a href="https://badaga.co/2019/04/28/learn-badaga-5/" target="_blank" rel="noopener noreferrer">Family relationship words ↗</a><a href="https://archive.phonetics.ucla.edu/Language/BFQ/bfq.html" target="_blank" rel="noopener noreferrer">UCLA phonetics archive ↗</a><a href="https://www.langrec.org/badaga/index.html" target="_blank" rel="noopener noreferrer">Langrec learning resources ↗</a></div></div></details>
+    </section>
+
+    <section class="view" id="view-story" aria-labelledby="story-heading" hidden>
+      <div class="section-heading story-heading"><p class="eyebrow">BUILT FROM BELONGING</p><h1 id="story-heading">Our language.<br><span>Their little everyday moments.</span></h1><p>A note from Siva Babu, creator of Hatti Quest.</p></div>
+      <figure class="founder-figure"><img src="/static/assets/founder-story.png" alt="An illustrated Siva Babu: connecting with an elder in the hills, sitting with children abroad, and building a learning adventure together" loading="lazy"><figcaption><span>Roots worth remembering.</span><span>A distance we can bridge.</span><span>Little moments of connection.</span></figcaption></figure>
+      <div class="story-copy"><p class="founder-intro">“I’m Siva Babu, and I’m Badaga.”</p><p>The Badaga community is rooted in the Nilgiri Hills of Tamil Nadu, India. Our language carries everyday conversations, family memories and a sense of belonging.</p><p>For children growing up outside India, chances to hear and speak Badaga can be few and far between. A child may love their family and their roots, yet struggle to find the words in a conversation with a grandparent.</p><p>I’m building Hatti Quest to help bring our language into those small, ordinary moments. A playful adventure. A word heard in a familiar voice. A conversation that continues after the screen is put away.</p><p>AI can help us find and organise learning material. Families and fluent speakers give that material its meaning and its voice. My hope is that children feel curious, connected and comfortable trying—one little word at a time.</p><div class="story-signature"><span class="brand-mark" aria-hidden="true">h.</span><div><strong>Siva Babu</strong><span>Badaga community member · Creator, Hatti Quest</span></div></div></div>
+      <div class="story-cta"><div><h2>Home can begin with one word.</h2><p>Start a little adventure, then share it with someone you love.</p></div><button class="button primary" data-go="adventure">Explore the hills →</button></div>
+      <p class="illustration-note">Illustrated using Siva’s public GitHub profile photo with his permission. These are conceptual scenes; the other people are fictional. The trail is imaginative, not a geographic or cultural reconstruction.</p>
+    </section>
+    <noscript><p class="panel">Please enable JavaScript for adventures and local family recordings. You can also explore <a href="https://badaga.co/learn-badaga/">community language resources</a>.</p></noscript>
+    <p id="app-error" class="app-error" role="alert" hidden></p>
+  </main>
+  <footer><span>hattiquest · Made for the words that bring us together.</span><a href="https://github.com/sivalinb/hatti-quest" target="_blank" rel="noopener noreferrer">Built with care by Siva Babu ↗</a></footer>
+  <dialog id="quest-dialog" aria-labelledby="quest-heading"><button id="close-quest" class="close-button" aria-label="Close adventure">×</button><div id="quest-body"></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
