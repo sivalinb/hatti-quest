@@ -3,6 +3,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = process.env.HATTI_TEST_URL || 'http://127.0.0.1:8765';
+async function noOverflow(page) {
+  const dimensions=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,
+    outside:[...document.querySelectorAll('body *')].map(e=>({tag:e.tagName,cls:e.className,
+      right:Math.round(e.getBoundingClientRect().right),width:Math.round(e.getBoundingClientRect().width)}))
+      .filter(e=>e.right>innerWidth+1).slice(0,10)}));
+  assert.ok(dimensions.scroll<=dimensions.width,JSON.stringify(dimensions));
+}
 (async () => {
   const browser = await chromium.launch({headless: true,
     ...(process.env.CHROME_EXECUTABLE ? {executablePath: process.env.CHROME_EXECUTABLE} : {})});
@@ -29,7 +36,7 @@ const base = process.env.HATTI_TEST_URL || 'http://127.0.0.1:8765';
   await page.screenshot({path:path.join(output,'story-studio.png'),fullPage:false});
   for(const width of [375,320]){
     await page.setViewportSize({width,height:900});
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
+    await noOverflow(page);
   }
   await page.setViewportSize({width:1440,height:1100});
   await page.goto(base+'/lab');
@@ -40,7 +47,7 @@ const base = process.env.HATTI_TEST_URL || 'http://127.0.0.1:8765';
   await page.screenshot({path:path.join(output,'ai-evidence.png'),fullPage:true});
   for(const width of [375,320]){
     await page.setViewportSize({width,height:900});
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
+    await noOverflow(page);
   }
   assert.deepEqual(errors,[]);
   await browser.close();
